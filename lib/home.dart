@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:simple_screens/map/map.dart';
 
-class text extends StatefulWidget {
-  const text({super.key});
+class Home extends StatefulWidget {
+  const Home({super.key});
 
   @override
-  State<text> createState() => _textState();
+  State<Home> createState() => _HomeState();
 }
 
-class _textState extends State<text> {
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     final user = FirebaseAuth.instance.currentUser!;
     return Scaffold(
       body: Padding(
@@ -22,9 +24,6 @@ class _textState extends State<text> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
-              height: 20,
-            ),
             Column(
               children: [
                 ElevatedButton.icon(
@@ -35,7 +34,10 @@ class _textState extends State<text> {
                         borderRadius: BorderRadius.circular(10)),
                   ),
                   onPressed: () => {
-                    FirebaseAuth.instance.signOut(),
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Map()),
+                    )
                   },
                   icon: Icon(
                     Icons.map_sharp,
@@ -49,7 +51,7 @@ class _textState extends State<text> {
               ],
             ),
             SizedBox(
-              height: 50,
+              height: height * 0.05,
             ),
             Column(
               children: [
@@ -75,7 +77,7 @@ class _textState extends State<text> {
               ],
             ),
             SizedBox(
-              height: 50,
+              height: height * 0.05,
             ),
             Column(
               children: [

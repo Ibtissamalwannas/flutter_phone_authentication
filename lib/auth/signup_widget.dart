@@ -6,8 +6,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:lottie/lottie.dart';
 
-import 'main.dart';
-import 'utils.dart';
+import '../main.dart';
+import '../utils.dart';
 
 class SignUpWidget extends StatefulWidget {
   final Function() onClickeSignIn;
@@ -34,6 +34,8 @@ class _SignUpWidgetState extends State<SignUpWidget> {
   }
 
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Container(
         margin: EdgeInsets.only(left: 25, right: 25),
@@ -46,11 +48,11 @@ class _SignUpWidgetState extends State<SignUpWidget> {
               children: [
                 Image.asset(
                   'assets/pass.png',
-                  width: 200,
-                  height: 170,
+                  width: width * 0.5,
+                  height: height * 0.25,
                 ),
                 SizedBox(
-                  height: 30,
+                  height: height * 0.035,
                 ),
                 TextFormField(
                   controller: emailController,
@@ -73,7 +75,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: height * 0.025,
                 ),
                 TextFormField(
                   controller: passwordController,
@@ -106,7 +108,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                       : null,
                 ),
                 SizedBox(
-                  height: 20,
+                  height: height * 0.035,
                 ),
                 ElevatedButton.icon(
                   style: ElevatedButton.styleFrom(
@@ -126,7 +128,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                   ),
                 ),
                 SizedBox(
-                  height: 24,
+                  height: height * 0.03,
                 ),
                 RichText(
                   text: TextSpan(

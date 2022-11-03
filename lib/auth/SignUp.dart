@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:simple_screens/SplashScreen.dart';
-import 'package:simple_screens/auth_page.dart';
-import 'package:simple_screens/login_widget.dart';
+import 'package:simple_screens/auth/auth_page.dart';
+import 'package:simple_screens/auth/login_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:simple_screens/phone.dart';
-import 'package:simple_screens/text.dart';
+import 'package:simple_screens/auth/phone_verification.dart';
+import 'package:simple_screens/home.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -28,9 +28,9 @@ class _SignUpState extends State<SignUp> {
             child: Text('wrong'),
           );
         } else if (snapshot.hasData) {
-          return text();
+          return Home();
         } else {
-          return MyPhone();
+          return PhoneVerification();
         }
       },
       stream: FirebaseAuth.instance.authStateChanges(),

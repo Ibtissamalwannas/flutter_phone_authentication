@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:lottie/lottie.dart';
 import 'package:email_validator/email_validator.dart';
 
-import 'main.dart';
+import '../main.dart';
 
 class LoginWidget extends StatefulWidget {
   final VoidCallback onClickeSignUp;
@@ -31,13 +31,14 @@ class _LoginWidgetState extends State<LoginWidget> {
   }
 
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Container(
         margin: EdgeInsets.only(left: 25, right: 25),
         alignment: Alignment.center,
         child: SingleChildScrollView(
           child: Column(
-            // mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Row(
@@ -51,17 +52,17 @@ class _LoginWidgetState extends State<LoginWidget> {
                       )),
                 ],
               ),
-              SizedBox(height: 5),
+              SizedBox(height: height * 0.01),
               Row(
                 children: [
-                  SizedBox(width: 5),
+                  SizedBox(width: width * 0.01),
                   Text(
                     "Sign in to your account",
                     style: TextStyle(fontSize: 15),
                   ),
                 ],
               ),
-              SizedBox(height: 50),
+              SizedBox(height: height * 0.05),
               TextFormField(
                 controller: emailController,
                 keyboardType: TextInputType.emailAddress,
@@ -83,7 +84,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 ),
               ),
               SizedBox(
-                height: 20,
+                height: height * 0.025,
               ),
               TextFormField(
                 controller: passwordController,
@@ -116,7 +117,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                     : null,
               ),
               SizedBox(
-                height: 20,
+                height: height * 0.035,
               ),
               ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
@@ -136,7 +137,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 ),
               ),
               SizedBox(
-                height: 24,
+                height: height * 0.03,
               ),
               RichText(
                 text: TextSpan(

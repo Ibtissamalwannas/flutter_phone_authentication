@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
-import 'package:simple_screens/SignUp.dart';
+import 'package:simple_screens/auth/SignUp.dart';
 import 'package:simple_screens/main.dart';
-import 'package:simple_screens/phone.dart';
+import 'package:simple_screens/auth/phone_verification.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:simple_screens/text.dart';
+import 'package:simple_screens/home.dart';
 import 'package:lottie/lottie.dart';
 
 class MyVerify extends StatefulWidget {
@@ -112,11 +112,12 @@ class _MyVerifyState extends State<MyVerify> {
                       try {
                         PhoneAuthCredential credential =
                             PhoneAuthProvider.credential(
-                                verificationId: MyPhone.verify, smsCode: code);
+                                verificationId: PhoneVerification.verify,
+                                smsCode: code);
                         await auth.signInWithCredential(credential);
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => text()),
+                          MaterialPageRoute(builder: (context) => Home()),
                         );
                       } catch (e) {
                         print("wrong otp");
@@ -142,7 +143,7 @@ class _MyVerifyState extends State<MyVerify> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const MyPhone()),
+                            builder: (context) => const PhoneVerification()),
                       );
                     },
                     child: Text(

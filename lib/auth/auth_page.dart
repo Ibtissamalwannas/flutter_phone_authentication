@@ -1,6 +1,6 @@
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:simple_screens/login_widget.dart';
+import 'package:simple_screens/auth/login_widget.dart';
 
 import 'signup_widget.dart';
 
@@ -21,4 +21,3 @@ class _AuthPageState extends State<AuthPage> {
       : SignUpWidget(onClickeSignIn: toggle);
   void toggle() => setState(() => isLogin = !isLogin);
 }
-

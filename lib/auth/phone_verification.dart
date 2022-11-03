@@ -1,25 +1,24 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:simple_screens/auth_page.dart';
-import 'package:simple_screens/otp.dart';
+import 'package:simple_screens/auth/auth_page.dart';
+import 'package:simple_screens/auth/otp.dart';
 
-class MyPhone extends StatefulWidget {
-  const MyPhone({Key? key}) : super(key: key);
+class PhoneVerification extends StatefulWidget {
+  const PhoneVerification({Key? key}) : super(key: key);
 
   static String verify = "";
 
   @override
-  State<MyPhone> createState() => _MyPhoneState();
+  State<PhoneVerification> createState() => _PhoneVerificationState();
 }
 
-class _MyPhoneState extends State<MyPhone> {
+class _PhoneVerificationState extends State<PhoneVerification> {
   TextEditingController countryController = TextEditingController();
   var phone = "";
 
   @override
   void initState() {
-    // TODO: implement initState
     countryController.text = "+961";
     super.initState();
   }
@@ -32,6 +31,8 @@ class _MyPhoneState extends State<MyPhone> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Container(
         margin: EdgeInsets.only(left: 25, right: 25),
@@ -42,18 +43,18 @@ class _MyPhoneState extends State<MyPhone> {
             children: [
               Image.asset(
                 'assets/img1.png',
-                width: 200,
-                height: 170,
+                width: width * 0.5,
+                height: height * 0.25,
               ),
               SizedBox(
-                height: 25,
+                height: height * 0.03,
               ),
               Text(
                 "Phone Verification",
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
               SizedBox(
-                height: 10,
+                height: height * 0.02,
               ),
               Text(
                 "We need to register your phone to getting started!",
@@ -63,18 +64,15 @@ class _MyPhoneState extends State<MyPhone> {
                 textAlign: TextAlign.center,
               ),
               SizedBox(
-                height: 30,
+                height: height * 0.035,
               ),
               Container(
-                height: 55,
+                height: height * 0.08,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(
-                      width: 10,
-                    ),
-                    SizedBox(
-                      width: 60,
+                      width: width * 0.19,
                       child: TextField(
                         controller: countryController,
                         cursorColor: Colors.grey,
@@ -118,11 +116,11 @@ class _MyPhoneState extends State<MyPhone> {
                 ),
               ),
               SizedBox(
-                height: 20,
+                height: height * 0.03,
               ),
               SizedBox(
                 width: double.infinity,
-                height: 50,
+                height: height * 0.07,
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         primary: Color.fromARGB(255, 252, 171, 49),
@@ -141,7 +139,7 @@ class _MyPhoneState extends State<MyPhone> {
                             (PhoneAuthCredential credential) async {},
                         verificationFailed: (FirebaseAuthException e) {},
                         codeSent: (String verificationId, int? resendToken) {
-                          MyPhone.verify = verificationId;
+                          PhoneVerification.verify = verificationId;
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -157,18 +155,18 @@ class _MyPhoneState extends State<MyPhone> {
                     )),
               ),
               SizedBox(
-                height: 50,
+                height: height * 0.07,
               ),
               Text(
                 'Or Sign in with',
                 style: TextStyle(),
               ),
               SizedBox(
-                height: 20,
+                height: height * 0.02,
               ),
               SizedBox(
-                width: 150,
-                height: 50,
+                width: width * 0.4,
+                height: height * 0.07,
                 child: ElevatedButton.icon(
                     onPressed: () {
                       Navigator.push(
